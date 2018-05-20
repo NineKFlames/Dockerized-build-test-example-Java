@@ -1,0 +1,11 @@
+package cheberiak.artem.dockerbuildtest;
+
+import org.springframework.web.bind.annotation.*;
+
+@org.springframework.web.bind.annotation.RestController
+public class RestController {
+    @GetMapping("/")
+    public String helloWorld() {
+        return "Hello, world!";
+    }
+}
