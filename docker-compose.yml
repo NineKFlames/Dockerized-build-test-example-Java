@@ -1,0 +1,4 @@
+maven-build:
+  build: .
+  volumes:
+    - ./:/tmp/build/
