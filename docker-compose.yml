@@ -1,4 +1,22 @@
-maven-build:
-  build: .
-  volumes:
-    - ./:/tmp/build/
+version: '2'
+services:
+  maven-build:
+    build:
+      context: .
+      dockerfile: build/Dockerfile-build
+    image: maven-build:latest
+    volumes:
+      - ./:/tmp/build/
+  app:
+    build:
+      context: .
+      dockerfile: build/Dockerfile-app
+    image: java-app:latest
+    ports:
+      - "8080:8080"
+    links:
+      - maven-build
+    entrypoint:
+      - java
+      - -jar
+      - docker-build-test-0.1.0-SNAPSHOT.jar
